@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +17,24 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
+  };
+
+  const handlePricingClick = () => {
+    navigate('/pricing');
   };
 
   return (
@@ -51,7 +68,7 @@ const Header = () => {
               Comparison
             </button>
             <button 
-              onClick={() => scrollToSection("pricing")}
+              onClick={handlePricingClick}
               className="text-sm text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-105"
             >
               Pricing
