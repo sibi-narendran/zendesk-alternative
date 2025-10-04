@@ -20,9 +20,6 @@ const FeatureBlock = ({ title, description, imageUrl, reverse = false }: Feature
             }`}
             style={{ transitionDelay: '100ms' }}
           >
-            <div className="inline-block px-3 py-1 rounded-full bg-highlight/10 text-highlight text-xs font-semibold mb-4 border border-highlight/20">
-              FEATURE
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
               {title}
             </h2>
