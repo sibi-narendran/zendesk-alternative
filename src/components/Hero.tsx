@@ -5,18 +5,13 @@ const Hero = () => {
     <section className="min-h-[70vh] flex items-center justify-center bg-gradient-primary pt-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial from-accent/20 to-transparent pointer-events-none" />
       <div className="container mx-auto px-6 py-24 text-center relative z-10">
-        <div className="inline-block mb-4 animate-fade-up">
-          <span className="px-4 py-2 rounded-full bg-highlight/10 text-highlight border border-highlight/30 text-sm font-semibold">
-            ✨ The Future of Customer Support
-          </span>
-        </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-accent-foreground mb-4 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
+        <h1 className="text-5xl md:text-7xl font-bold text-accent-foreground mb-4 animate-fade-up">
           Meet Doofy.
         </h1>
-        <p className="text-3xl md:text-4xl font-bold text-foreground mb-8 animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
+        <p className="text-3xl md:text-4xl font-bold text-foreground mb-8 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
           A smarter, affordable Gorgias alternative.
         </p>
-        <div className="animate-fade-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]">
+        <div className="animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
           <Button 
             variant="default" 
             size="lg" 
