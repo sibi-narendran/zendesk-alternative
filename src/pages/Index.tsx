@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import FeatureBlock from "@/components/FeatureBlock";
+import MigrationSection from "@/components/MigrationSection";
 import IntegrationsSection from "@/components/IntegrationsSection";
 import CTASection from "@/components/CTASection";
 import aiContextImg from "@/assets/ai-context.jpg";
@@ -48,6 +49,8 @@ const Index = () => {
           reverse={false}
         />
       </div>
+      
+      <MigrationSection />
       
       <IntegrationsSection />
       
