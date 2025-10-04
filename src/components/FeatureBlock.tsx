@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
 interface FeatureBlockProps {
   title: string;
   description: string;
@@ -6,11 +8,18 @@ interface FeatureBlockProps {
 }
 
 const FeatureBlock = ({ title, description, imageUrl, reverse = false }: FeatureBlockProps) => {
+  const { ref, isVisible } = useScrollAnimation(0.2);
+
   return (
-    <section className="py-16 md:py-24">
+    <section ref={ref} className="py-16 md:py-24">
       <div className="container mx-auto px-6">
         <div className={`grid md:grid-cols-2 gap-12 items-center ${reverse ? 'md:flex-row-reverse' : ''}`}>
-          <div className={`${reverse ? 'md:order-2' : ''}`}>
+          <div 
+            className={`${reverse ? 'md:order-2' : ''} transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '100ms' }}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               {title}
             </h2>
@@ -18,12 +27,17 @@ const FeatureBlock = ({ title, description, imageUrl, reverse = false }: Feature
               {description}
             </p>
           </div>
-          <div className={`${reverse ? 'md:order-1' : ''}`}>
-            <div className="bg-muted rounded-2xl aspect-[4/3] overflow-hidden">
+          <div 
+            className={`${reverse ? 'md:order-1' : ''} transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '300ms' }}
+          >
+            <div className="bg-muted rounded-2xl aspect-[4/3] overflow-hidden group">
               <img 
                 src={imageUrl} 
                 alt={title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           </div>
