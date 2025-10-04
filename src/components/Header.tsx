@@ -58,13 +58,23 @@ const Header = () => {
             </button>
           </div>
 
-          <Button 
-            variant="default" 
-            size="sm" 
-            className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
-          >
-            Start Free Trial
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              onClick={() => window.open('https://calendly.com', '_blank')}
+            >
+              Book a Call
+            </Button>
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
+            >
+              Start Free Trial
+            </Button>
+          </div>
         </nav>
       </div>
     </header>

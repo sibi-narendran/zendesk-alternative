@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import FeatureBlock from "@/components/FeatureBlock";
 import MigrationSection from "@/components/MigrationSection";
 import IntegrationsSection from "@/components/IntegrationsSection";
-import ContactSection from "@/components/ContactSection";
 import CTASection from "@/components/CTASection";
 import aiContextImg from "@/assets/ai-context.jpg";
 import automationImg from "@/assets/automation.jpg";
@@ -54,8 +53,6 @@ const Index = () => {
       <MigrationSection />
       
       <IntegrationsSection />
-      
-      <ContactSection />
       
       <CTASection />
     </div>
