@@ -30,12 +30,6 @@ const Pricing = () => {
           </h1>
           <div className="bg-gradient-accent rounded-3xl p-12 shadow-soft space-y-8">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Pay for our autonomous solved tickets
-              </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-                Not seats.
-              </p>
               <p className="text-2xl md:text-3xl font-bold text-primary">
                 Human usage forever free
               </p>
