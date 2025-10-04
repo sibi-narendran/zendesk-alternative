@@ -45,7 +45,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 py-4 animate-slide-down">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center flex-1">
             <a 
               href="/" 
               className="text-2xl font-bold text-foreground hover:opacity-80 transition-opacity"
@@ -54,7 +54,7 @@ const Header = () => {
             </a>
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
             <button 
               onClick={() => scrollToSection("features")}
               className="text-sm text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-105"
@@ -69,7 +69,7 @@ const Header = () => {
             </button>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-1 justify-end">
             <Button 
               variant="outline" 
               size="sm" 
