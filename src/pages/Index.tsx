@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import FeatureBlock from "@/components/FeatureBlock";
-import StatsSection from "@/components/StatsSection";
 import CTASection from "@/components/CTASection";
 import aiContextImg from "@/assets/ai-context.jpg";
 import automationImg from "@/assets/automation.jpg";
@@ -21,8 +20,6 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      
-      <StatsSection />
       
       <div id="features">
         <FeatureBlock
