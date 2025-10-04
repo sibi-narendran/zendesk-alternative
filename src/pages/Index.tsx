@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import FeatureBlock from "@/components/FeatureBlock";
+import IntegrationsSection from "@/components/IntegrationsSection";
 import CTASection from "@/components/CTASection";
 import aiContextImg from "@/assets/ai-context.jpg";
 import automationImg from "@/assets/automation.jpg";
@@ -47,6 +48,8 @@ const Index = () => {
           reverse={false}
         />
       </div>
+      
+      <IntegrationsSection />
       
       <CTASection />
     </div>

@@ -150,6 +150,14 @@ export default {
             boxShadow: "0 0 30px hsl(225 73% 70% / 0.5)",
           },
         },
+        "scroll": {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-50%)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -160,6 +168,7 @@ export default {
         "slide-down": "slide-down 0.4s ease-out",
         "float": "float 3s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
+        "scroll": "scroll 30s linear infinite",
       },
     },
   },
