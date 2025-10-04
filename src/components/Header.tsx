@@ -62,12 +62,6 @@ const Header = () => {
               Features
             </button>
             <button 
-              onClick={() => scrollToSection("comparison")}
-              className="text-sm text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-105"
-            >
-              Comparison
-            </button>
-            <button 
               onClick={handlePricingClick}
               className="text-sm text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-105"
             >
