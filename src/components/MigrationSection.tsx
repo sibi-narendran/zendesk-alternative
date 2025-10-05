@@ -4,7 +4,7 @@ const MigrationSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const platforms = [
-    "Gorgias",
+    "zendesk",
     "Zendesk",
     "Intercom",
     "Freshdesk",

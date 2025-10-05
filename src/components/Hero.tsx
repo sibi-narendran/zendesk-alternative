@@ -7,7 +7,7 @@ const Hero = () => {
           Meet Doofy.
         </h1>
         <p className="text-3xl md:text-4xl font-bold text-foreground mb-8 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
-          A smarter, affordable Gorgias alternative.
+          A smarter, affordable zendesk alternative.
         </p>
         <div className="animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
           <Button variant="default" size="lg" className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl">
