@@ -25,7 +25,7 @@ const CTASection = () => {
           Join hundreds of businesses that have already made the smart choice.
         </p>
         <div 
-          className={`transition-all duration-700 ${
+          className={`transition-all duration-700 flex flex-col sm:flex-row gap-4 justify-center ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
@@ -36,6 +36,14 @@ const CTASection = () => {
             className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl"
           >
             Start Free Trial
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="rounded-full transition-all duration-300 hover:scale-110 border-2 hover:bg-accent hover:text-accent-foreground"
+            onClick={() => window.open('https://calendly.com/sibinarendran/new-meeting?month=2025-10', '_blank')}
+          >
+            Book a Call
           </Button>
         </div>
         <div className={`mt-12 flex justify-center gap-12 text-sm text-muted-foreground transition-all duration-700 ${

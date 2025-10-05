@@ -9,9 +9,17 @@ const Hero = () => {
         <p className="text-3xl md:text-4xl font-bold text-foreground mb-8 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
           A smarter, affordable zendesk alternative.
         </p>
-        <div className="animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
+        <div className="animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards] flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="default" size="lg" className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl">
             Get Started
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="rounded-full transition-all duration-300 hover:scale-110 border-2 hover:bg-accent hover:text-accent-foreground"
+            onClick={() => window.open('https://calendly.com/sibinarendran/new-meeting?month=2025-10', '_blank')}
+          >
+            Book a Call
           </Button>
         </div>
       </div>

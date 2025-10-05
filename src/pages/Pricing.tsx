@@ -83,7 +83,7 @@ const Pricing = () => {
               variant="outline" 
               size="lg" 
               className="rounded-full"
-              onClick={() => window.open('https://calendly.com', '_blank')}
+              onClick={() => window.open('https://calendly.com/sibinarendran/new-meeting?month=2025-10', '_blank')}
             >
               Book a Call
             </Button>
