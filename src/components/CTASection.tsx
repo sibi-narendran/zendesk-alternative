@@ -41,7 +41,7 @@ const CTASection = () => {
             variant="outline" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 border-2 hover:bg-accent hover:text-accent-foreground"
-            onClick={() => window.open('https://calendly.com/sibinarendran/new-meeting?month=2025-10', '_blank')}
+            onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
           >
             Book a Call
           </Button>
