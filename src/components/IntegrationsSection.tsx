@@ -1,19 +1,25 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { SiShopify, SiSlack, SiStripe, SiMailchimp, SiWoocommerce, SiBigcommerce, SiMagento, SiPaypal, SiMeta, SiAmazon, SiDiscord } from "react-icons/si";
+import { FaHeadset, FaCreditCard, FaEnvelope } from "react-icons/fa";
 
 const IntegrationsSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const integrations = [
-    "Shopify",
-    "Salesforce",
-    "Slack",
-    "HubSpot",
-    "Stripe",
-    "gorgias",
-    "Mailchimp",
-    "WooCommerce",
-    "BigCommerce",
-    "Magento",
+    { name: "WooCommerce", icon: <SiWoocommerce className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "BigCommerce", icon: <SiBigcommerce className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Magento", icon: <SiMagento className="w-5 h-5" />, color: "text-orange-600" },
+    { name: "Stripe", icon: <SiStripe className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "PayPal", icon: <SiPaypal className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Square", icon: <FaCreditCard className="w-5 h-5" />, color: "text-gray-700" },
+    { name: "Shopify", icon: <SiShopify className="w-5 h-5" />, color: "text-green-600" },
+    { name: "Zendesk", icon: <FaHeadset className="w-5 h-5" />, color: "text-green-600" },
+    { name: "Slack", icon: <SiSlack className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "Klaviyo", icon: <FaEnvelope className="w-5 h-5" />, color: "text-orange-600" },
+    { name: "Mailchimp", icon: <SiMailchimp className="w-5 h-5" />, color: "text-yellow-600" },
+    { name: "Meta", icon: <SiMeta className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Amazon", icon: <SiAmazon className="w-5 h-5" />, color: "text-orange-600" },
+    { name: "Discord", icon: <SiDiscord className="w-5 h-5" />, color: "text-indigo-600" },
   ];
 
   // Duplicate the array for seamless loop
@@ -57,11 +63,11 @@ const IntegrationsSection = () => {
                   className="flex-shrink-0 mx-8 px-6 py-4 bg-card border border-border rounded-xl hover:border-highlight hover:shadow-glow transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-accent flex items-center justify-center text-highlight font-bold group-hover:scale-110 transition-transform">
-                      {app.charAt(0)}
+                    <div className={`w-8 h-8 rounded-lg bg-white flex items-center justify-center ${app.color} group-hover:scale-110 transition-transform shadow-sm`}>
+                      {app.icon}
                     </div>
                     <span className="text-foreground font-semibold whitespace-nowrap">
-                      {app}
+                      {app.name}
                     </span>
                   </div>
                 </div>

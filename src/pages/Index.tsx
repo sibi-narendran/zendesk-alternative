@@ -4,6 +4,7 @@ import FeatureBlock from "@/components/FeatureBlock";
 import MigrationSection from "@/components/MigrationSection";
 import IntegrationsSection from "@/components/IntegrationsSection";
 import CTASection from "@/components/CTASection";
+import RevolutionaryPricingSection from "@/components/RevolutionaryPricingSection";
 import aiContextImg from "@/assets/ai-context.jpg";
 import automationImg from "@/assets/automation.jpg";
 import costSavingsImg from "@/assets/cost-savings.jpg";
@@ -22,6 +23,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
+      
+      <MigrationSection />
+      
+      <IntegrationsSection />
+      
+      <RevolutionaryPricingSection />
       
       <div id="features">
         <FeatureBlock
@@ -49,10 +56,6 @@ const Index = () => {
           reverse={false}
         />
       </div>
-      
-      <MigrationSection />
-      
-      <IntegrationsSection />
       
       <CTASection />
     </div>

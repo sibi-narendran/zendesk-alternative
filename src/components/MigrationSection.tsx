@@ -1,17 +1,18 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { SiIntercom } from "react-icons/si";
+import { FaUsers, FaLifeRing, FaInbox, FaHeadset, FaTicketAlt } from "react-icons/fa";
 
 const MigrationSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const platforms = [
-    "gorgias",
-    "gorgias",
-    "Intercom",
-    "Freshdesk",
-    "Help Scout",
-    "Front",
-    "Kustomer",
-    "Re:amaze",
+    { name: "gorgias", icon: <FaHeadset className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "Kustomer", icon: <FaUsers className="w-5 h-5" />, color: "text-red-600" },
+    { name: "Intercom", icon: <SiIntercom className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Freshdesk", icon: <FaTicketAlt className="w-5 h-5" />, color: "text-green-600" },
+    { name: "Help Scout", icon: <FaLifeRing className="w-5 h-5" />, color: "text-yellow-600" },
+    { name: "Front", icon: <FaInbox className="w-5 h-5" />, color: "text-indigo-600" },
+    { name: "LiveChat", icon: <FaHeadset className="w-5 h-5" />, color: "text-orange-600" },
   ];
 
   // Duplicate the array for seamless loop
@@ -55,11 +56,11 @@ const MigrationSection = () => {
                   className="flex-shrink-0 mx-8 px-6 py-4 bg-card border border-border rounded-xl hover:border-destructive/50 hover:shadow-soft transition-all duration-300 group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-accent flex items-center justify-center text-destructive font-bold group-hover:scale-110 transition-transform">
-                      {platform.charAt(0)}
+                    <div className={`w-8 h-8 rounded-lg bg-white flex items-center justify-center ${platform.color} group-hover:scale-110 transition-transform shadow-sm`}>
+                      {platform.icon}
                     </div>
                     <span className="text-foreground font-semibold whitespace-nowrap">
-                      {platform}
+                      {platform.name}
                     </span>
                   </div>
                 </div>

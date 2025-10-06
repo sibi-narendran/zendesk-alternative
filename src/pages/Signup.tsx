@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,11 +16,31 @@ const Signup = () => {
 
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
+    try {
+      // Submit email to backend API
+      const response = await fetch('http://localhost:3001/api/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('Email submitted successfully:', email);
+        setIsSubmitted(true);
+      } else {
+        console.error('Failed to submit email:', result.error);
+        alert('Failed to submit email. Please try again.');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGoBack = () => {
@@ -31,119 +49,110 @@ const Signup = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-primary flex items-center justify-center px-4">
-        <div className="absolute inset-0 bg-gradient-radial from-accent/20 to-transparent pointer-events-none" />
-        <Card className="w-full max-w-md relative z-10 shadow-2xl">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-              <CheckCircle className="w-8 h-8 text-green-600" />
-            </div>
-            <CardTitle className="text-2xl font-bold text-green-700">
-              Welcome to Doofy!
-            </CardTitle>
-            <CardDescription className="text-lg">
-              Thank you for starting your free trial. We'll be in touch soon!
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <h3 className="font-semibold text-green-800 mb-2">What's Next?</h3>
-              <ul className="text-sm text-green-700 space-y-1">
-                <li>• Check your email for setup instructions</li>
-                <li>• We'll create your account within 24 hours</li>
-                <li>• Start exploring all of Doofy's features</li>
-              </ul>
-            </div>
-            <div className="flex gap-3">
-              <Button 
-                onClick={() => navigate('/')} 
-                variant="outline" 
-                className="flex-1"
-              >
-                Back to Home
-              </Button>
-              <Button 
-                onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
-                className="flex-1"
-              >
-                Book a Demo
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-gradient-primary flex items-center justify-center px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-radial from-accent/20 to-transparent pointer-events-none animate-pulse" />
+        
+        {/* Floating success animation */}
+        <div className="w-full max-w-lg relative z-10 animate-bounce-in">
+          <div className="bg-white/95 backdrop-blur-lg border border-white/30 rounded-3xl p-12 text-center shadow-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-up text-green-700">
+              Doofy.
+            </h1>
+            
+            <h2 className="text-2xl font-bold text-foreground mb-4 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
+              Welcome!
+            </h2>
+            
+            <p className="text-lg text-muted-foreground mb-10 animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
+              Check your email to get started
+            </p>
+            
+            <Button 
+              onClick={() => navigate('/')} 
+              variant="outline" 
+              className="w-full h-12 rounded-full animate-fade-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards] hover:scale-110 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+            >
+              Back to Home
+            </Button>
+          </div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute top-10 left-10 w-3 h-3 bg-green-700/60 rounded-full animate-ping [animation-delay:1s]" />
+        <div className="absolute top-20 right-20 w-2 h-2 bg-accent/60 rounded-full animate-ping [animation-delay:2s]" />
+        <div className="absolute bottom-20 left-20 w-2.5 h-2.5 bg-green-700/40 rounded-full animate-ping [animation-delay:3s]" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-primary flex items-center justify-center px-4">
-      <div className="absolute inset-0 bg-gradient-radial from-accent/20 to-transparent pointer-events-none" />
+    <div className="min-h-screen bg-gradient-primary flex items-center justify-center px-4 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-radial from-accent/10 to-transparent pointer-events-none" />
       
-      <Card className="w-full max-w-md relative z-10 shadow-2xl">
-        <CardHeader>
-          <div className="flex items-center gap-2 mb-4">
+      {/* Floating background elements */}
+      <div className="absolute top-1/4 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-1/4 right-10 w-48 h-48 bg-green-700/5 rounded-full blur-3xl animate-float-delayed" />
+      
+      <div className="w-full max-w-lg relative z-10 animate-slide-up">
+        <div className="bg-white/95 backdrop-blur-lg border border-white/30 rounded-3xl p-12 shadow-2xl">
+          
+          {/* Back button */}
+          <div className="flex items-center gap-2 mb-10 animate-fade-in">
             <Button 
               variant="ghost" 
               size="sm" 
               onClick={handleGoBack}
-              className="p-2 hover:bg-gray-100"
+              className="p-3 hover:bg-accent/10 rounded-full transition-all hover:scale-110"
             >
-              <ArrowLeft className="w-4 h-4" />
+              <ArrowLeft className="w-5 h-5" />
             </Button>
-            <span className="text-sm text-muted-foreground">Back</span>
           </div>
           
-          <CardTitle className="text-3xl font-bold text-center text-green-700">
-            Start Your Free Trial
-          </CardTitle>
-          <CardDescription className="text-center text-lg">
-            Join hundreds of businesses already using Doofy as their gorgias alternative
-          </CardDescription>
-        </CardHeader>
-        
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-medium">
-                Work Email Address
-              </Label>
+          {/* Main content */}
+          <div className="text-center mb-10">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-up text-green-700">
+              Doofy.
+            </h1>
+            
+            <h2 className="text-2xl font-bold text-foreground mb-4 animate-fade-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
+              Start Free Trial
+            </h2>
+            
+            <p className="text-lg text-muted-foreground animate-fade-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
+              No credit card required
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="animate-fade-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards]">
               <Input
-                id="email"
                 type="email"
-                placeholder="you@company.com"
+                placeholder="Enter your work email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="h-12 text-lg"
+                className="h-16 text-xl rounded-2xl border-2 focus:border-green-700 transition-all duration-300 focus:scale-105 shadow-lg"
                 disabled={isLoading}
               />
             </div>
 
-            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-              <h3 className="font-semibold text-blue-800 mb-2">What you get:</h3>
-              <ul className="text-sm text-blue-700 space-y-1">
-                <li>✓ 14-day free trial</li>
-                <li>✓ No credit card required</li>
-                <li>✓ Full access to all features</li>
-                <li>✓ Free migration from gorgias</li>
-                <li>✓ 24/7 support</li>
-              </ul>
-            </div>
-
             <Button 
               type="submit" 
-              className="w-full h-12 text-lg font-semibold rounded-full shadow-glow hover:shadow-xl transition-all duration-300 hover:scale-105"
+              className="w-full h-16 text-xl font-semibold rounded-2xl transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl animate-fade-up [animation-delay:400ms] opacity-0 [animation-fill-mode:forwards]"
               disabled={isLoading || !email}
             >
-              {isLoading ? "Setting up your trial..." : "Start Free Trial"}
+              {isLoading ? (
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  Setting up...
+                </div>
+              ) : (
+                "Get Started"
+              )}
             </Button>
-
-            <p className="text-xs text-center text-muted-foreground">
-              By continuing, you agree to our terms of service and privacy policy.
-            </p>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
