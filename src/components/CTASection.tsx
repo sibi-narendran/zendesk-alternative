@@ -49,7 +49,22 @@ const CTASection = () => {
             Book a Call
           </Button>
         </div>
-        <div className={`mt-12 flex justify-center gap-12 text-sm text-muted-foreground transition-all duration-700 ${
+        <div 
+          className={`mt-8 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: '350ms' }}
+        >
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 max-w-lg mx-auto">
+            <p className="text-blue-800 font-semibold text-lg text-center">
+              🚀 Revolutionary Pricing: Only pay for AI usage, not human hours
+            </p>
+            <p className="text-blue-600 text-sm text-center mt-1">
+              No per-agent fees • No seat-based pricing • Pure AI efficiency
+            </p>
+          </div>
+        </div>
+        <div className={`mt-8 flex justify-center gap-12 text-sm text-muted-foreground transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '400ms' }}>

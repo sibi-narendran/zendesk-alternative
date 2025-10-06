@@ -30,6 +30,16 @@ const Hero = () => {
             Book a Call
           </Button>
         </div>
+        <div className="animate-fade-up [animation-delay:300ms] opacity-0 [animation-fill-mode:forwards] mt-8">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 max-w-md mx-auto">
+            <p className="text-green-800 font-semibold text-lg text-center">
+              💡 Only pay for AI usage, not human hours
+            </p>
+            <p className="text-green-600 text-sm text-center mt-1">
+              Revolutionary pricing model - no per-agent fees
+            </p>
+          </div>
+        </div>
       </div>
     </section>;
 };

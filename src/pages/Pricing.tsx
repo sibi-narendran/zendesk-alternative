@@ -98,6 +98,21 @@ const Pricing = () => {
               Start Free Trial
             </Button>
           </div>
+          
+          <div className="mt-8 flex justify-center">
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-xl p-6 max-w-2xl">
+              <p className="text-purple-800 font-bold text-xl text-center mb-2">
+                💰 Game-Changing Pricing Model
+              </p>
+              <p className="text-purple-700 font-semibold text-lg text-center mb-2">
+                Only pay for AI usage, not human hours
+              </p>
+              <p className="text-purple-600 text-sm text-center">
+                Unlike traditional per-seat pricing, you only pay when AI handles your tickets. 
+                <br />Scale your team without scaling your costs.
+              </p>
+            </div>
+          </div>
         </div>
       </main>
     </div>
