@@ -1,7 +1,4 @@
-// Using JSONBin.io as a simple cloud database for Vercel deployment
-const JSONBIN_URL = 'https://api.jsonbin.io/v3/b/676250a7ad19ca34f8c97b45'; // Create your own at jsonbin.io
-const JSONBIN_KEY = '$2a$10$85nT.r4FjB4Wd3Aw9LPiKeFQF2qVpFP.6OLsA6Rv0EQZJF9.VJqZq'; // Replace with your key
-
+// Demo stats API for Vercel deployment
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -17,33 +14,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Fetch current data from JSONBin
-    const fetchResponse = await fetch(JSONBIN_URL + '/latest', {
-      headers: { 'X-Master-Key': JSONBIN_KEY }
-    });
-    
-    let emailStorage = [];
-    if (fetchResponse.ok) {
-      const data = await fetchResponse.json();
-      emailStorage = data.record?.emails || [];
-    }
-
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
+    // Demo stats matching the sample data - in production, query real database
     const stats = {
-      total: emailStorage.length,
-      today: emailStorage.filter(email => 
-        email.timestamp.split('T')[0] === today
-      ).length,
-      week: emailStorage.filter(email => 
-        new Date(email.timestamp) > oneWeekAgo
-      ).length
+      total: 3,
+      today: 1, // Sarah Johnson from 2h ago  
+      week: 3   // All 3 demo emails from this week
     };
 
-    res.json({ success: true, stats });
+    res.json({ 
+      success: true, 
+      stats,
+      message: 'Demo stats showing sample data. Connect real database for live tracking.'
+    });
   } catch (error) {
     console.error('Stats API Error:', error);
     return res.status(500).json({ 
