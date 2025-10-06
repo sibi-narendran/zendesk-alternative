@@ -26,7 +26,7 @@ const Index = () => {
       <div id="features">
         <FeatureBlock
           title="AI that understands context."
-          description="Doofy uses advanced AI to resolve tickets faster and more accurately than zendesk, making every interaction seamless."
+          description="Doofy uses advanced AI to resolve tickets faster and more accurately than gorgias, making every interaction seamless."
           imageUrl={aiContextImg}
           reverse={false}
         />
@@ -44,7 +44,7 @@ const Index = () => {
       <div id="pricing">
         <FeatureBlock
           title="Significantly lower cost."
-          description="Get all the powerful features you need at a fraction of zendesk's cost, delivering unbeatable value for growing businesses."
+          description="Get all the powerful features you need at a fraction of gorgias's cost, delivering unbeatable value for growing businesses."
           imageUrl={costSavingsImg}
           reverse={false}
         />

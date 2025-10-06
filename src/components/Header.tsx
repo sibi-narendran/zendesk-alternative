@@ -74,7 +74,7 @@ const Header = () => {
               variant="outline" 
               size="sm" 
               className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
-              onClick={() => window.open('https://calendly.com', '_blank')}
+              onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
             >
               Book a Call
             </Button>
@@ -82,6 +82,7 @@ const Header = () => {
               variant="default" 
               size="sm" 
               className="rounded-full transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              onClick={() => navigate('/signup')}
             >
               Start Free Trial
             </Button>

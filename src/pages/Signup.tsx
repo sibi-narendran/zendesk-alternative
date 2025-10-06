@@ -97,7 +97,7 @@ const Signup = () => {
             Start Your Free Trial
           </CardTitle>
           <CardDescription className="text-center text-lg">
-            Join hundreds of businesses already using Doofy as their Zendesk alternative
+            Join hundreds of businesses already using Doofy as their gorgias alternative
           </CardDescription>
         </CardHeader>
         
@@ -125,7 +125,7 @@ const Signup = () => {
                 <li>✓ 14-day free trial</li>
                 <li>✓ No credit card required</li>
                 <li>✓ Full access to all features</li>
-                <li>✓ Free migration from Zendesk</li>
+                <li>✓ Free migration from gorgias</li>
                 <li>✓ 24/7 support</li>
               </ul>
             </div>

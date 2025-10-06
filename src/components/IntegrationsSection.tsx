@@ -9,7 +9,7 @@ const IntegrationsSection = () => {
     "Slack",
     "HubSpot",
     "Stripe",
-    "Zendesk",
+    "gorgias",
     "Mailchimp",
     "WooCommerce",
     "BigCommerce",
