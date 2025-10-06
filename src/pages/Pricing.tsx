@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Generate slider values: 1-10 by 1, 10-100 by 20, 100-2000 by 200
 const generateSliderValues = () => {
@@ -16,6 +17,7 @@ const sliderValues = generateSliderValues();
 
 const Pricing = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const navigate = useNavigate();
   const tickets = sliderValues[sliderIndex];
   const cost = tickets * 0.2;
   const isContactSales = tickets >= 2000;
@@ -91,6 +93,7 @@ const Pricing = () => {
               variant="default" 
               size="lg" 
               className="rounded-full"
+              onClick={() => navigate('/signup')}
             >
               Start Free Trial
             </Button>

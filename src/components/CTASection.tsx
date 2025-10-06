@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useNavigate } from "react-router-dom";
 
 const CTASection = () => {
   const { ref, isVisible } = useScrollAnimation(0.3);
+  const navigate = useNavigate();
 
   return (
     <section ref={ref} className="py-24 bg-gradient-accent relative overflow-hidden">
@@ -34,6 +36,7 @@ const CTASection = () => {
             variant="default" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl"
+            onClick={() => navigate('/signup')}
           >
             Start Free Trial
           </Button>
