@@ -1,4 +1,6 @@
-// Simple email collection API for Vercel - stores emails via webhook to Formspree
+// Email collection API for Vercel with shared storage
+import { getEmails, addEmail, clearEmails } from './db.js';
+
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -30,60 +32,74 @@ export default async function handler(req, res) {
         user_agent: req.headers['user-agent'] || 'unknown'
       };
 
-      // Log email submission (in production, save to database)
-      console.log(`New Doofy signup: ${emailData.email} at ${emailData.timestamp}`);
+      // Save email to shared storage
+      const savedEmail = await addEmail(emailData);
       
       console.log(`New email saved: ${emailData.email} at ${emailData.timestamp}`);
       
       return res.status(201).json({ 
         success: true, 
         message: 'Email saved successfully',
-        id: emailData.id,
-        email: emailData.email,
-        timestamp: emailData.timestamp
+        id: savedEmail.id,
+        email: savedEmail.email,
+        timestamp: savedEmail.timestamp
       });
     }
 
     if (req.method === 'GET') {
-      // Demo data showing sample signups - in production, connect real database
-      const demoEmails = [
-        {
-          id: '3',
-          email: 'sarah.johnson@shopify.com',
-          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
-          ip_address: '192.168.1.45',
-          user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
-        },
-        {
-          id: '2', 
-          email: 'mike.chen@bigcommerce.com',
-          timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(), // 6 hours ago
-          ip_address: '10.0.0.123',
-          user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        },
-        {
-          id: '1',
-          email: 'alex.rodriguez@woocommerce.com', 
-          timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
-          ip_address: '172.16.0.67',
-          user_agent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15'
-        }
-      ];
+      // Get all emails from shared storage
+      const emails = await getEmails();
+      
+      // If no emails yet, show some demo data so admin page looks good
+      if (emails.length === 0) {
+        const demoEmails = [
+          {
+            id: 'demo-3',
+            email: 'sarah.johnson@shopify.com',
+            timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+            ip_address: '192.168.1.45',
+            user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'
+          },
+          {
+            id: 'demo-2', 
+            email: 'mike.chen@bigcommerce.com',
+            timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+            ip_address: '10.0.0.123',
+            user_agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+          },
+          {
+            id: 'demo-1',
+            email: 'alex.rodriguez@woocommerce.com', 
+            timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+            ip_address: '172.16.0.67',
+            user_agent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0)'
+          }
+        ];
+        
+        return res.json({ 
+          success: true, 
+          emails: demoEmails,
+          total: demoEmails.length,
+          message: 'Showing demo data. Submit an email to see real submissions appear!'
+        });
+      }
       
       return res.json({ 
         success: true, 
-        emails: demoEmails,
-        total: demoEmails.length,
-        message: 'Demo data - showing sample signups. Connect real database for production.'
+        emails: emails,
+        total: emails.length,
+        message: `${emails.length} real email submissions collected!`
       });
     }
 
     if (req.method === 'DELETE') {
-      // Demo response
+      // Clear all emails from shared storage
+      const deletedCount = await clearEmails();
+      
       return res.json({ 
         success: true, 
-        message: 'Demo mode - no data to delete',
-        deletedCount: 0
+        message: `Deleted ${deletedCount} email records`,
+        deletedCount
       });
     }
 

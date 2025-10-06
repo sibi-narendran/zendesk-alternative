@@ -1,4 +1,6 @@
-// Demo stats API for Vercel deployment
+// Stats API for Vercel deployment with shared storage
+import { getEmails, getStats } from './db.js';
+
 export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,17 +16,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Demo stats matching the sample data - in production, query real database
-    const stats = {
-      total: 3,
-      today: 1, // Sarah Johnson from 2h ago  
-      week: 3   // All 3 demo emails from this week
-    };
+    // Get emails from shared storage and calculate real stats
+    const emails = await getEmails();
+    const stats = getStats(emails);
 
     res.json({ 
       success: true, 
       stats,
-      message: 'Demo stats showing sample data. Connect real database for live tracking.'
+      message: emails.length > 0 ? `Live stats from ${emails.length} real submissions!` : 'No submissions yet. Demo stats shown when no data available.'
     });
   } catch (error) {
     console.error('Stats API Error:', error);
