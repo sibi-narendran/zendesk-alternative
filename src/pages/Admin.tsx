@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Users, Mail, Calendar, Download, Trash2 } from "lucide-react";
+import { apiCall } from "@/config/api";
 
 interface EmailEntry {
   id: string;
@@ -32,11 +33,11 @@ const Admin = () => {
         setError(null);
         
         // Fetch emails
-        const emailsResponse = await fetch('http://localhost:3001/api/emails');
+        const emailsResponse = await apiCall('emails');
         const emailsData = await emailsResponse.json();
         
         // Fetch stats  
-        const statsResponse = await fetch('http://localhost:3001/api/stats');
+        const statsResponse = await apiCall('stats');
         const statsData = await statsResponse.json();
         
         if (emailsData.success) {
@@ -83,7 +84,7 @@ const Admin = () => {
   const handleClearEmails = async () => {
     if (window.confirm('Are you sure you want to delete all email entries? This cannot be undone.')) {
       try {
-        const response = await fetch('http://localhost:3001/api/emails', {
+        const response = await apiCall('emails', {
           method: 'DELETE'
         });
         

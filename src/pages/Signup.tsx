@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { apiCall } from "@/config/api";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,11 +19,8 @@ const Signup = () => {
     
     try {
       // Submit email to backend API
-      const response = await fetch('http://localhost:3001/api/emails', {
+      const response = await apiCall('emails', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({ email })
       });
 
