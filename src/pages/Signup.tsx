@@ -36,6 +36,15 @@ const Signup = () => {
             event_label: 'email_signup',
             value: 1
           });
+
+          // Track Google Ads conversion
+          gtag('event', 'conversion', {
+            'send_to': 'AW-10872232955/oI5hCKLM7KgbEPu3pMAo',
+            'value': 1.0,
+            'currency': 'USD',
+            'event_category': 'Lead',
+            'event_label': 'Submit lead form'
+          });
         }
         
         setIsSubmitted(true);
