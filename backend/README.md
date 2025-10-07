@@ -1,6 +1,6 @@
-# deskpilot Backend API
+# dooza Backend API
 
-Backend API server for collecting and managing email submissions from the deskpilot landing page.
+Backend API server for collecting and managing email submissions from the dooza landing page.
 
 ## Features
 

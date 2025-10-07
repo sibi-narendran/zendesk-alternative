@@ -6,7 +6,7 @@
 1. **Go to:** https://supabase.com
 2. **Sign up** for free account
 3. **Create new project:**
-   - Name: `deskpilot-emails`  
+   - Name: `dooza-emails`  
    - Database password: (choose strong password)
    - Region: Choose closest to your users
 
@@ -14,7 +14,7 @@
 In Supabase SQL Editor, run this query:
 
 ```sql
--- Create emails table for deskpilot signups
+-- Create emails table for dooza signups
 CREATE TABLE public.emails (
   id BIGSERIAL PRIMARY KEY,
   email VARCHAR(255) NOT NULL,
@@ -236,4 +236,4 @@ GROUP BY ip_address;
 
 ---
 
-**🎉 Once configured, your deskpilot website will have enterprise-grade email collection with permanent storage, real-time analytics, and the ability to handle thousands of signups reliably!**
+**🎉 Once configured, your dooza website will have enterprise-grade email collection with permanent storage, real-time analytics, and the ability to handle thousands of signups reliably!**
