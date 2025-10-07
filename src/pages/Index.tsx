@@ -5,9 +5,10 @@ import MigrationSection from "@/components/MigrationSection";
 import IntegrationsSection from "@/components/IntegrationsSection";
 import CTASection from "@/components/CTASection";
 import RevolutionaryPricingSection from "@/components/RevolutionaryPricingSection";
-import aiContextImg from "@/assets/ai-context.jpg";
-import automationImg from "@/assets/automation.jpg";
-import costSavingsImg from "@/assets/cost-savings.jpg";
+// Images are in the public directory, reference them as public URLs
+const aiContextImg = "/ai-context.jpg";
+const automationImg = "/automation.jpg";
+const costSavingsImg = "/cost-savings.jpg";
 import { useEffect } from "react";
 
 const Index = () => {
