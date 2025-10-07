@@ -5,11 +5,15 @@ const API_CONFIG = {
 };
 
 export const getApiUrl = () => {
-  // Check if we're on Vercel/production
+  // Check if we're in production environment
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('vercel.app') || hostname.includes('gorgias-alternative')) {
-      return ''; // Use relative URLs for Vercel functions
+    // Check for production domains - use relative URLs for production
+    if (hostname.includes('vercel.app') || 
+        hostname.includes('gorgias-alternative') || 
+        hostname.includes('trydooza.com') ||
+        hostname !== 'localhost' && hostname !== '127.0.0.1') {
+      return ''; // Use relative URLs for production (Vercel functions)
     }
   }
   
