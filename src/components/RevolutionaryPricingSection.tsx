@@ -41,7 +41,17 @@ const RevolutionaryPricingSection = () => {
             variant="default" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl"
-            onClick={() => navigate('/signup')}
+            onClick={() => {
+              // Track get started click from pricing section
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                  event_category: 'engagement',
+                  event_label: 'get_started_pricing_section',
+                  value: 1
+                });
+              }
+              navigate('/signup');
+            }}
           >
             Get Started
           </Button>
@@ -49,7 +59,17 @@ const RevolutionaryPricingSection = () => {
             variant="outline" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-            onClick={() => navigate('/pricing')}
+            onClick={() => {
+              // Track pricing page navigation
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                  event_category: 'engagement',
+                  event_label: 'view_pricing_details',
+                  value: 1
+                });
+              }
+              navigate('/pricing');
+            }}
           >
             View Pricing
           </Button>

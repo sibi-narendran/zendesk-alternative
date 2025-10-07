@@ -17,7 +17,17 @@ const Hero = () => {
             variant="default" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 shadow-glow hover:shadow-xl"
-            onClick={() => navigate('/signup')}
+            onClick={() => {
+              // Track get started click in Google Analytics
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                  event_category: 'engagement',
+                  event_label: 'get_started_hero',
+                  value: 1
+                });
+              }
+              navigate('/signup');
+            }}
           >
             Get Started
           </Button>
@@ -25,7 +35,17 @@ const Hero = () => {
             variant="outline" 
             size="lg" 
             className="rounded-full transition-all duration-300 hover:scale-110 border-2 hover:bg-accent hover:text-accent-foreground"
-            onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
+            onClick={() => {
+              // Track demo booking click in Google Analytics
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                  event_category: 'engagement',
+                  event_label: 'demo_booking_hero',
+                  value: 1
+                });
+              }
+              window.open('https://cal.com/sibinarendran/demo', '_blank');
+            }}
           >
             Book a Call
           </Button>

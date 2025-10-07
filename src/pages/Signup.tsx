@@ -28,6 +28,16 @@ const Signup = () => {
       
       if (result.success) {
         console.log('Email submitted successfully:', email);
+        
+        // Track conversion event in Google Analytics
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submit', {
+            event_category: 'engagement',
+            event_label: 'email_signup',
+            value: 1
+          });
+        }
+        
         setIsSubmitted(true);
       } else {
         console.error('Failed to submit email:', result.error);
