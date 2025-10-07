@@ -5,9 +5,10 @@ import MigrationSection from "@/components/MigrationSection";
 import IntegrationsSection from "@/components/IntegrationsSection";
 import CTASection from "@/components/CTASection";
 import RevolutionaryPricingSection from "@/components/RevolutionaryPricingSection";
-import aiContextImg from "@/assets/ai-context.jpg";
-import automationImg from "@/assets/automation.jpg";
-import costSavingsImg from "@/assets/cost-savings.jpg";
+// Using placeholder images - replace with actual assets when available
+const aiContextImg = "/placeholder.svg";
+const automationImg = "/placeholder.svg"; 
+const costSavingsImg = "/placeholder.svg";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -33,7 +34,7 @@ const Index = () => {
       <div id="features">
         <FeatureBlock
           title="AI that understands context."
-          description="dooza uses advanced AI to resolve tickets faster and more accurately than gorgias, making every interaction seamless."
+          description="Doofy uses advanced AI to resolve tickets faster and more accurately than gorgias, making every interaction seamless."
           imageUrl={aiContextImg}
           reverse={false}
         />
