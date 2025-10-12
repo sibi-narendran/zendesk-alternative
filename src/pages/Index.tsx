@@ -1,14 +1,11 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import FeatureBlock from "@/components/FeatureBlock";
-import MigrationSection from "@/components/MigrationSection";
+import SocialProofBar from "@/components/SocialProofBar";
+import HowItWorks from "@/components/HowItWorks";
 import IntegrationsSection from "@/components/IntegrationsSection";
-import CTASection from "@/components/CTASection";
-import RevolutionaryPricingSection from "@/components/RevolutionaryPricingSection";
-// Images are in the public directory, reference them as public URLs
-const aiContextImg = "/ai-context.jpg";
-const automationImg = "/automation.jpg";
-const costSavingsImg = "/cost-savings.jpg";
+import TypeformMigration from "@/components/TypeformMigration";
+import ValueGrid from "@/components/ValueGrid";
+import FinalCTA from "@/components/FinalCTA";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -25,40 +22,19 @@ const Index = () => {
       <Header />
       <Hero />
       
-      <MigrationSection />
+      <HowItWorks />
+      
+      <TypeformMigration />
+      
+      <SocialProofBar />
       
       <IntegrationsSection />
       
-      <RevolutionaryPricingSection />
-      
       <div id="features">
-        <FeatureBlock
-          title="AI that understands context."
-          description="dooza uses advanced AI to resolve tickets faster and more accurately than gorgias, making every interaction seamless."
-          imageUrl={aiContextImg}
-          reverse={false}
-        />
+        <ValueGrid />
       </div>
       
-      <div id="comparison">
-        <FeatureBlock
-          title="Superior automation tools."
-          description="Automate repetitive tasks with smarter workflows and reduce manual effort, saving your team valuable time."
-          imageUrl={automationImg}
-          reverse={true}
-        />
-      </div>
-      
-      <div id="pricing">
-        <FeatureBlock
-          title="Significantly lower cost."
-          description="Get all the powerful features you need at a fraction of gorgias's cost, delivering unbeatable value for growing businesses."
-          imageUrl={costSavingsImg}
-          reverse={false}
-        />
-      </div>
-      
-      <CTASection />
+      <FinalCTA />
     </div>
   );
 };

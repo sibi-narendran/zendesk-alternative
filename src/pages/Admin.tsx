@@ -159,7 +159,7 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-primary">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-6 pt-32 pb-8">
         
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 bg-background border-b border-border transition-all duration-300 ${
+      className={`fixed top-12 left-0 right-0 z-50 bg-background border-b border-border transition-all duration-300 ${
         isScrolled ? "shadow-md" : ""
       }`}
     >

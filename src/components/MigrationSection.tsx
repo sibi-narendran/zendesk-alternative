@@ -6,13 +6,13 @@ const MigrationSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   const platforms = [
-    { name: "gorgias", icon: <FaHeadset className="w-5 h-5" />, color: "text-purple-600" },
-    { name: "Kustomer", icon: <FaUsers className="w-5 h-5" />, color: "text-red-600" },
-    { name: "Intercom", icon: <SiIntercom className="w-5 h-5" />, color: "text-blue-600" },
-    { name: "Freshdesk", icon: <FaTicketAlt className="w-5 h-5" />, color: "text-green-600" },
-    { name: "Help Scout", icon: <FaLifeRing className="w-5 h-5" />, color: "text-yellow-600" },
-    { name: "Front", icon: <FaInbox className="w-5 h-5" />, color: "text-indigo-600" },
-    { name: "LiveChat", icon: <FaHeadset className="w-5 h-5" />, color: "text-orange-600" },
+    { name: "Typeform", icon: <FaUsers className="w-5 h-5" />, color: "text-purple-600" },
+    { name: "Google Forms", icon: <FaInbox className="w-5 h-5" />, color: "text-red-600" },
+    { name: "SurveyMonkey", icon: <FaTicketAlt className="w-5 h-5" />, color: "text-blue-600" },
+    { name: "Jotform", icon: <FaUsers className="w-5 h-5" />, color: "text-green-600" },
+    { name: "Formstack", icon: <FaInbox className="w-5 h-5" />, color: "text-yellow-600" },
+    { name: "Wufoo", icon: <FaLifeRing className="w-5 h-5" />, color: "text-indigo-600" },
+    { name: "Microsoft Forms", icon: <FaHeadset className="w-5 h-5" />, color: "text-orange-600" },
   ];
 
   // Duplicate the array for seamless loop
@@ -34,7 +34,7 @@ const MigrationSection = () => {
           }`}
           style={{ transitionDelay: '100ms' }}
         >
-          Switch to dooza in minutes with seamless data migration
+          Switch to dooza in minutes with seamless form migration
         </p>
         
         <div 

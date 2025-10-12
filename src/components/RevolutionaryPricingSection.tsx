@@ -27,7 +27,7 @@ const RevolutionaryPricingSection = () => {
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          Only Pay for AI, Not for Human Usage
+          Only Pay for Advanced Features, Not Basic Forms
         </p>
 
         {/* Action Buttons */}

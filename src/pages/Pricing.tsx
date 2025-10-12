@@ -1,103 +1,129 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
-import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
+import { Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-// Generate slider values: 1-10 by 1, 10-100 by 20, 100-2000 by 200
-const generateSliderValues = () => {
-  const values = [];
-  for (let i = 1; i <= 10; i++) values.push(i);
-  for (let i = 30; i <= 100; i += 20) values.push(i);
-  for (let i = 300; i <= 2000; i += 200) values.push(i);
-  return values;
-};
-
-const sliderValues = generateSliderValues();
-
 const Pricing = () => {
-  const [sliderIndex, setSliderIndex] = useState(0);
   const navigate = useNavigate();
-  const tickets = sliderValues[sliderIndex];
-  const cost = tickets * 0.2;
-  const isContactSales = tickets >= 2000;
+
+  const plans = [
+    {
+      name: "Free",
+      price: "$0",
+      period: "/month",
+      description: "Everything you need to get started",
+      features: [
+        "Unlimited forms, unlimited responses, unlimited questions per form",
+        "Add images; custom colors and fonts; logic builder; score & calculations; hidden fields; embed forms",
+        "Integrations: Google Sheets, Slack, Zapier; email notifications",
+        "Multiple endings per form; webhooks; collect signatures",
+        "Calendly, Cal.com, SavvyCal integrations",
+        "Workspaces/folders",
+        "Non-English language support",
+        "File uploads up to 10 MB per file",
+        "Basic analytics & drop-off rate"
+      ],
+      buttonText: "Start Free",
+      highlighted: false
+    },
+    {
+      name: "Pro",
+      price: "$29",
+      period: "/month",
+      description: "For professional use and teams",
+      features: [
+        "Everything in Free",
+        "Multiple language support; custom fonts",
+        "Redirect to a URL; add your brand logo; customize form metadata; remove Youform branding",
+        "Partial submissions; refill link",
+        "Custom domains",
+        "File uploads: unlimited (fair-use policy)",
+        "Invite team members",
+        "Collect payments (Stripe)",
+        "Google Tag Manager (for Meta/TikTok pixels, etc.)",
+        "Advanced analytics"
+      ],
+      buttonText: "Choose Pro",
+      highlighted: true,
+      annualPrice: "$20/month billed annually"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main className="container mx-auto px-6 pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-            Simple, Fair Pricing
-          </h1>
-          <div className="bg-gradient-accent rounded-3xl p-12 shadow-soft space-y-8">
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-primary">
-                Human usage forever free
-              </p>
-            </div>
+      <main className="container mx-auto px-6 pt-40 pb-20">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Start Building Forms for Free
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Everything you need to create professional forms with AI
+            </p>
+          </div>
 
-            <div className="mt-12 space-y-6">
-              <h3 className="text-2xl font-bold text-foreground">
-                AI Cost Calculator
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center text-lg text-muted-foreground">
-                  <span>Auto-solved tickets per month</span>
-                  <span className="font-bold text-foreground">{tickets}</span>
-                </div>
-                <Slider
-                  value={[sliderIndex]}
-                  onValueChange={(value) => setSliderIndex(value[0])}
-                  max={sliderValues.length - 1}
-                  step={1}
-                  className="w-full"
-                />
-                <div className="pt-4 border-t border-border">
-                  {isContactSales ? (
-                    <div className="space-y-2">
-                      <p className="text-3xl font-bold text-primary">
-                        Contact Sales
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        For enterprise pricing
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      <p className="text-sm text-muted-foreground">
-                        Monthly cost
-                      </p>
-                      <p className="text-4xl font-bold text-primary">
-                        ${cost.toFixed(2)}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        $0.20 per auto-solved ticket
-                      </p>
-                    </div>
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
+            {plans.map((plan, index) => (
+              <div
+                key={index}
+                className={`relative bg-white border rounded-2xl p-8 transition-all duration-500 ${
+                  plan.highlighted 
+                    ? 'border-orange-500 shadow-2xl ring-2 ring-orange-500/20 scale-105' 
+                    : 'border-gray-200 hover:shadow-2xl hover:border-orange-300'
+                }`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                  <div className="flex items-baseline justify-center mb-2">
+                    <span className="text-4xl font-bold text-orange-600">{plan.price}</span>
+                    <span className="text-gray-500 ml-1">{plan.period}</span>
+                  </div>
+                  {plan.annualPrice && (
+                    <p className="text-sm text-green-600 font-semibold mb-2">
+                      or {plan.annualPrice}
+                    </p>
                   )}
+                  <p className="text-gray-600">{plan.description}</p>
                 </div>
+
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <div className="w-5 h-5 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-orange-600" />
+                      </div>
+                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button 
+                  variant={plan.highlighted ? "default" : "outline"}
+                  size="lg"
+                  className={`w-full rounded-full py-3 text-lg font-semibold transition-all duration-300 hover:scale-105 ${
+                    plan.highlighted 
+                      ? 'bg-orange-500 hover:bg-orange-600 text-white shadow-xl hover:shadow-2xl' 
+                      : 'border-2 border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl'
+                  }`}
+                  onClick={() => navigate('/signup')}
+                >
+                  {plan.buttonText}
+                </Button>
               </div>
-            </div>
+            ))}
           </div>
-          <div className="flex justify-center gap-4 pt-8">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="rounded-full"
-              onClick={() => window.open('https://cal.com/sibinarendran/demo', '_blank')}
-            >
-              Book a Call
-            </Button>
-            <Button 
-              variant="default" 
-              size="lg" 
-              className="rounded-full"
-              onClick={() => navigate('/signup')}
-            >
-              Start Free Trial
-            </Button>
-          </div>
+
         </div>
       </main>
     </div>
